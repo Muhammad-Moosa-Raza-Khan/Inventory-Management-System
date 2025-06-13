@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Add Transaction</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Add Transaction</h1>
+        <form method="POST">
+            <div class="form-group">
+                <label for="product_id">Product:</label>
+                <select class="form-control" id="product_id" name="product_id" required>
+                    {% for product in products %}
+                    <option value="{{ product.product_id }}">{{ product.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="transaction_type">Transaction Type:</label>
+                <select class="form-control" id="transaction_type" name="transaction_type" required>
+                    <option value="Purchase">Purchase</option>
+                    <option value="Sale">Sale</option>
+                    <option value="Transfer">Transfer</option>
+                    <option value="Adjustment">Adjustment</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="quantity">Quantity:</label>
+                <input type="number" class="form-control" id="quantity" name="quantity" required>
+            </div>
+            <div class="form-group">
+                <label for="unit_price">Unit Price:</label>
+                <input type="number" step="0.01" class="form-control" id="unit_price" name="unit_price">
+            </div>
+            <div class="form-group">
+                <label for="location_id">Location (Optional):</label>
+                <input type="text" class="form-control" id="location_id" name="location_id">
+            </div>
+
+            <div class="form-group">
+                <label for="customer_id">Customer (Optional):</label>
+                <input type="text" class="form-control" id="customer_id" name="customer_id">
+            </div>
+            <button type="submit" class="btn btn-primary">Add Transaction</button>
+            <a href="{{ url_for('transactions') }}" class="btn btn-secondary">Cancel</a>
+        </form>
+    </div>
+</body>
+
+</html>

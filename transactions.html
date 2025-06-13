@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+{% extends "index.html" %}
+
+{% block content %}
+<h1>Transactions</h1>
+
+<a href="{{ url_for('add_transaction') }}" class="btn btn-success mb-3">Add New Transaction</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Product</th>
+            <th>Type</th>
+            <th>Quantity</th>
+            <th>Date</th>
+            <th>Unit Price</th>
+            <th>Total Cost</th>
+            <th>Customer</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for transaction in transactions %}
+        <tr>
+            <td>{{ transaction.transaction_id }}</td>
+            <td>{{ transaction.product_name }}</td>
+            <td>{{ transaction.transaction_type }}</td>
+            <td>{{ transaction.quantity }}</td>
+            <td>{{ transaction.transaction_date }}</td>
+            <td>{{ transaction.unit_price }}</td>
+            <td>{{ transaction.total_cost }}</td>
+            <td>{{ transaction.customer_name or "-" }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<a href="{{ url_for('products') }}" class="btn btn-secondary">Back to Dashboard</a>
+{% endblock %}

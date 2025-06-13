@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Transaction History Report</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Transaction History Report</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Transaction ID</th>
+                    <th>Product Name</th>
+                    <th>Transaction Type</th>
+                    <th>Quantity</th>
+                    <th>Transaction Date</th>
+                    <th>Unit Price</th>
+                    <th>Total Cost</th>
+                    <th>Customer Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for transaction in transaction_history %}
+                <tr>
+                    <td>{{ transaction.transaction_id }}</td>
+                    <td>{{ transaction.product_name }}</td>
+                    <td>{{ transaction.transaction_type }}</td>
+                    <td>{{ transaction.quantity }}</td>
+                    <td>{{ transaction.transaction_date }}</td>
+                    <td>{{ transaction.unit_price }}</td>
+                    <td>{{ transaction.total_cost }}</td>
+                    <td>{{ transaction.customer_name or "-" }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a href="{{ url_for('products') }}" class="btn btn-secondary">Back to Dashboard</a>
+    </div>
+</body>
+
+</html>

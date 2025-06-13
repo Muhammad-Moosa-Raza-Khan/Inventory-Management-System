@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Product Details</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container">
+        {% if product %}
+        <h1>{{ product.name }}</h1>
+        <p><strong>Description:</strong> {{ product.description }}</p>
+        <p><strong>Category ID:</strong> {{ product.category_id }}</p>
+        <p><strong>Supplier ID:</strong> {{ product.supplier_id }}</p>
+        <p><strong>Cost Price:</strong> ${{ product.cost_price }}</p>
+        <p><strong>Selling Price:</strong> ${{ product.selling_price }}</p>
+        <p><strong>Current Quantity:</strong> {{ product.current_quantity }}</p>
+        <p><strong>Minimum Quantity:</strong> {{ product.minimum_quantity }}</p>
+        <p><strong>Reorder Quantity:</strong> {{ product.reorder_quantity }}</p>
+        <p><strong>Unit:</strong> {{ product.unit }}</p>
+        <a href="/" class="btn btn-secondary">Back to Products</a>
+        {% else %}
+        <div class="alert alert-danger">Product not found.</div>
+        {% endif %}
+    </div>
+</body>
+
+</html>
